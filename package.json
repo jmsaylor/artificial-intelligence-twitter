@@ -1,0 +1,22 @@
+{
+  "name": "twitter-ai",
+  "version": "1.0.0",
+  "description": "Twitter API, Node, & AI sentiment analysis",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jmsaylor/artificial-intelligence-twitter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmsaylor/artificial-intelligence-twitter/issues"
+  },
+  "homepage": "https://github.com/jmsaylor/artificial-intelligence-twitter#readme",
+  "dependencies": {
+    "twitter-lite": "^0.14.0"
+  }
+}
