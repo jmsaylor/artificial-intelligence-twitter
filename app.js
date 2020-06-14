@@ -1,4 +1,6 @@
 const Twitter = require("twitter-lite");
+const language = require("@google-cloud/language");
+const languageClient = new language.LanguageServiceClient();
 
 const { twitterKey, twitterSecret } = require("./config.json");
 
@@ -19,14 +21,28 @@ const user = new Twitter({
     const tweets = await app.get("/search/tweets", {
       q: "diamonds",
       lang: "en",
-      count: 100,
+      count: 1,
     });
 
     //what's the diff between in and of in for conditions?
     for (tweet of tweets.statuses) {
-      console.dir(tweet.text);
+      console.log(tweet.text);
+      console.log(await getSentiment(tweet.text));
     }
   } catch (error) {
     console.error(error);
   }
 })();
+
+async function getSentiment(text) {
+  const document = {
+    content: text,
+    type: "PLAIN_TEXT",
+  };
+  const [result] = await languageClient.analyzeSentiment({
+    document: document,
+  });
+  const sentiment = result.documentSentiment;
+
+  return sentiment.score;
+}

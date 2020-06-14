@@ -4,7 +4,8 @@
   "description": "Twitter API, Node, & AI sentiment analysis",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "GOOGLE_APPLICATION_CREDENTIALS='./sincere-quasar-128023-deffc8c5f680.json' node app.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/jmsaylor/artificial-intelligence-twitter#readme",
   "dependencies": {
+    "@google-cloud/language": "^4.0.1",
     "twitter-lite": "^0.14.0"
   }
 }
