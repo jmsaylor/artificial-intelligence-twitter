@@ -9,12 +9,23 @@ const user = new Twitter({
 
 (async function () {
   try {
-    const response = await user.getBearerToken();
-    console.log(response.access_token);
+    const auth = await user.getBearerToken();
+    // console.log(response.access_token);
 
     const app = new Twitter({
-      bearer_token: response.access_token,
+      bearer_token: auth.access_token,
     });
+
+    const tweets = await app.get("/search/tweets", {
+      q: "diamonds",
+      lang: "en",
+      count: 100,
+    });
+
+    //what's the diff between in and of in for conditions?
+    for (tweet of tweets.statuses) {
+      console.dir(tweet.text);
+    }
   } catch (error) {
     console.error(error);
   }
